@@ -349,9 +349,17 @@ EOF
 DEFAULT_CONFIGURE_COMMAND=winpy
 # Use the WindRiver verion of all unix commands
 export OLD_PATH="$PATH"
-export PATH="${C_DRIVE}WindRiver/workbench-3.0/x86-win32/bin"
 export PATH="\$PATH:$UCPP_PYTHON_DIR"
 EOF
+if [ -d "${C_DRIVE}WindRiver/workbench-3.0/" ]; then
+	cat >>"$HOME/.ucpp/settings" <<EOF
+export PATH="${C_DRIVE}WindRiver/workbench-3.0/x86-win32/bin"
+EOF
+else
+	cat >>"$HOME/.ucpp/settings" <<EOF
+export PATH="${C_DRIVE}WindRiver/workbench-2.5/x86-win32/bin"
+EOF
+fi
 
 		if [ "x`which make`" = "x" ]; then
 			echo "Some unix commands are missing"
