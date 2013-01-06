@@ -179,7 +179,7 @@ export DEPLOY_IP=$DEPLOY_IP
 export C_DRIVE=$C_DRIVE
 EOF
 
-	cat >>"$HOME/.ucpp/settings" <<'EOF'
+	cat >>"$HOME/.ucpp/settings" <<EOF
 
 export WIND_HOME=${C_DRIVE}WindRiver
 export WIND_BASE=$WIND_HOME/vxworks-6.3
@@ -345,12 +345,12 @@ EOF
 		cat >>"$HOME/.ucpp/settings" <<EOF
 export UCPP_PYTHON_DIR=$UCPP_PYTHON_DIR
 EOF
-		cat >>"$HOME/.ucpp/settings" <<'EOF'
+		cat >>"$HOME/.ucpp/settings" <<EOF
 DEFAULT_CONFIGURE_COMMAND=winpy
 # Use the WindRiver verion of all unix commands
 export OLD_PATH="$PATH"
 export PATH="${C_DRIVE}WindRiver/workbench-3.0/x86-win32/bin"
-export PATH="$PATH:$UCPP_PYTHON_DIR"
+export PATH="\$PATH:$UCPP_PYTHON_DIR"
 EOF
 
 		if [ "x`which make`" = "x" ]; then
