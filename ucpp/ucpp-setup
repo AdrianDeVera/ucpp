@@ -351,7 +351,7 @@ DEFAULT_CONFIGURE_COMMAND=winpy
 export OLD_PATH="$PATH"
 export PATH="\$PATH:$UCPP_PYTHON_DIR"
 EOF
-if [ -d "${C_DRIVE}WindRiver/workbench-3.0/" ]; then
+if [ -d "${C_DRIVE}WindRiver/workbench-3.0/x86-win32/bin" ]; then
 	cat >>"$HOME/.ucpp/settings" <<EOF
 export PATH="${C_DRIVE}WindRiver/workbench-3.0/x86-win32/bin"
 EOF
@@ -370,8 +370,13 @@ fi
 				:
 			else
 				source "$HOME/.ucpp/settings"
+				if [ -d "$WIND_HOME/workbench-3.0/x86-win32/bin" ]; then
+					WIND_BIN="$WIND_HOME/workbench-3.0/x86-win32/bin"
+				else
+					WIND_BIN="$WIND_HOME/workbench-2.5/x86-win32/bin"
+				fi
 				echo 'export PATH="$PATH:COMMANDS_DIR"' | \
-					sed -e "s|COMMANDS_DIR|$WIND_HOME/workbench-3.0/x86-win32/bin|" >> ~/.bashrc
+					sed -e "s|COMMANDS_DIR|$WIND_BIN|" >> ~/.bashrc
 			echo ".bashrc updated; restart command prompt for changes to take effect"
 			fi
 		fi
